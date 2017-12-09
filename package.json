@@ -1,0 +1,16 @@
+{
+  "name": "angular-translate-current-language",
+  "version": "0.0.1",
+  "description": "Helper to retrieve current language when using angular-translate.",
+  "main": "src/angular-translate-current-language.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minijus/angular-translate-current-language"
+  },
+  "author": "Minijus laukaitis",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.7",
+    "angular-translate": "^2.16.0"
+  }
+}

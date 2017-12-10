@@ -1,8 +1,8 @@
 (function (angular) {
-
     /**
-     * @ngdoc overview
-     * @name pascalprecht.translate.$translateCurrentLanguage
+     * @ngdoc property
+     * @name pascalprecht.translate.$translate#currentLanguage
+     * @methodOf pascalprecht.translate.$translate
      *
      * @description
      * A helper method to retrieve current language when using angular-translate (pascalprecht.translate).
@@ -11,15 +11,25 @@
      * use() returns currently used language (if loaded), otherwise undefined.
      * In case both proposedLanguage() and use() fails fallback to language key stored in storage.
      * If all above fails return preferredLanguage(), aka default language.
+     *
+     * @return {string} current language key
      */
 
     angular.module("pascalprecht.translate")
-        .provider("$translateCurrentLanguage", $translateCurrentLanguageProvider);
+        .decorator("$translate", $translateDecorator);
 
-    function $translateCurrentLanguageProvider() {
-        this.$get = ["$translate", function ($translate) {
-            return $translate.proposedLanguage() || $translate.use() || $translate.storage().get($translate.storageKey()) || $translate.preferredLanguage();
-        }];
+    $translateDecorator.$inject = [
+        "$delegate"
+    ];
+
+    function $translateDecorator($delegate) {
+        Object.defineProperty($delegate, "currentLanguage", {
+            get: function () {
+                return $delegate.proposedLanguage() || $delegate.use() || $delegate.storage().get($delegate.storageKey()) || $delegate.preferredLanguage();
+            }
+        });
+
+        return $delegate;
     }
 
 })(window.angular);

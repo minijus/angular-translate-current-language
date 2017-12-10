@@ -3,6 +3,7 @@
      * @ngdoc property
      * @name pascalprecht.translate.$translate#currentLanguage
      * @methodOf pascalprecht.translate.$translate
+     * @requires $translate
      *
      * @description
      * A helper method to retrieve current language when using angular-translate (pascalprecht.translate).
@@ -15,7 +16,9 @@
      * @return {string} current language key
      */
 
-    angular.module("pascalprecht.translate")
+    angular.module("pascalprecht.translate.currentLanguage", [
+        "pascalprecht.translate"
+    ])
         .decorator("$translate", $translateDecorator);
 
     $translateDecorator.$inject = [

@@ -1,6 +1,6 @@
 {
   "name": "angular-translate-current-language",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Helper to retrieve current language when using angular-translate.",
   "main": "src/angular-translate-current-language.js",
   "repository": {
